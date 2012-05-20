@@ -16,9 +16,6 @@ results
 node_modules
 npm-debug.log
 
-public/javascript/*
+*.js
+*.css
 !public/javascript/vendor
-
-public/css/*
-
-app.js
