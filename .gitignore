@@ -6,6 +6,8 @@ lib-cov
 *.out
 *.pid
 *.gz
+.DS_Store
+.sass-cache
 
 pids
 logs
@@ -13,3 +15,10 @@ results
 
 node_modules
 npm-debug.log
+
+public/javascript/*
+!public/javascript/vendor
+
+public/css/*
+
+app.js
