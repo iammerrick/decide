@@ -28,6 +28,9 @@ app.http.before = [
 # Questions
 ###
 
+###
+# Helpers
+###
 slugify = (text) ->
   text = text.replace /[^-a-zA-Z0-9,&\s]+/ig, ''
   text = text.replace /-/gi, '_'
