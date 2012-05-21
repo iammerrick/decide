@@ -53,5 +53,4 @@ app.router.get 'question/:id', (id) ->
     this.res.json doc
 
 
-
 app.start 3000

@@ -2,7 +2,8 @@ define [
   'controllers/Controller'
   'collections/OptionsCollection'
   'views/OptionItemView'
-], (Controller, OptionsCollection, OptionItemView) ->
+  'views/NewOptionView'
+], (Controller, OptionsCollection, OptionItemView, NewOptionView) ->
 
   class OptionItemController extends Controller
 
@@ -27,7 +28,13 @@ define [
 
     className: 'options list'
 
+    events:
+      'click .js-add-option' : 'addOption'
+
     tagName: 'ul'
+
+    addOption: ->
+      console.log 'add option'
 
     initialize: ->
       @render()
@@ -38,3 +45,4 @@ define [
       @collection.each (option) =>
         @append new OptionItemController(model: option).render()
       this
+      @append NewOptionView()
