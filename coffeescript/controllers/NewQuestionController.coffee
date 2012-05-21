@@ -26,13 +26,13 @@ define [
       @model.set(
         name: @question.val()
       )
-        .slugify()
         .save()
-        .then =>
+        .then (res) =>
+          @model.set '_id', res.id
           @viewQuestion(@model)
 
     viewQuestion: ->
-      @options.router.navigate @model.get('slug'), trigger: true, replace: true
+      @options.router.navigate @model.get('_id'), trigger: true, replace: true
 
     hide: ->
       @$el.fadeOut()

@@ -53,7 +53,7 @@ require [
     view: (question) ->
       app.present(new DecideController(
         router: this
-        slug: question
+        id: question
       ))
   )
 

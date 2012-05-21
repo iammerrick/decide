@@ -12,13 +12,13 @@ define [
     initialize: ->
       super()
       @model = new Question
-        slug: @options.slug
+        _id: @options.id
 
       @model.on "change", @render
       @model.fetch()
 
     render: =>
       @html CurrentDecisionView()
-      @options = new OptionsController
+      @optionsController = new OptionsController
         collection: new OptionsCollection @model.get 'options'
-      @append @options
+      @append @optionsController
