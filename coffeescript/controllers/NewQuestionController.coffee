@@ -14,7 +14,7 @@ define [
       'click input[type=submit]' : 'create'
 
     elements:
-      'question' : '.js-question'
+      '.js-question' : 'question'
 
     initialize: ->
       @append NewQuestionView()

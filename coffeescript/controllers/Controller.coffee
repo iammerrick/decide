@@ -8,7 +8,7 @@ define ['use!backbone'], ({View}) ->
     the element shortcuts.
     ###
     html: (html) ->
-      @$el.html html
+      @$el.html html or ''
       @refreshElements()
       this
 
@@ -36,5 +36,5 @@ define ['use!backbone'], ({View}) ->
     you would be able to reference this.name as the element.
     ###
     refreshElements: () ->
-      @[key] = @$(selector) for key, selector of @elements if @elements?
+      @[key] = @$(selector) for selector, key of @elements if @elements?
       this

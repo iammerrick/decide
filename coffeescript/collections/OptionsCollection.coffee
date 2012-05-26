@@ -1,9 +1,7 @@
 define [
   'collections/Collection'
   'models/Option'
-  'jquery'
-  'moment'
-], (Collection, Option, $, moment) ->
+], (Collection, Option) ->
   class OptionsCollection extends Collection
 
     model: Option

@@ -52,5 +52,12 @@ app.router.get 'question/:id', (id) ->
   db.get id, (err, doc) =>
     this.res.json doc
 
+###
+# Update a question.
+###
+app.router.put 'question/:id', (id) ->
+  db.save id, this.req.body, (err, doc) =>
+    this.res.json doc
+
 
 app.start 3000

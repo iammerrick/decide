@@ -10,15 +10,18 @@ define [
     className: 'decide'
 
     initialize: ->
-      super()
       @model = new Question
         _id: @options.id
 
-      @model.on "change", @render
       @model.fetch()
+        .then =>
+          @loaded()
+
+    loaded: ->
+      @optionsController = new OptionsController
+        model: @model
+      @render()
 
     render: =>
       @html CurrentDecisionView()
-      @optionsController = new OptionsController
-        collection: new OptionsCollection @model.get 'options'
-      @append @optionsController
+      @append @optionsController.render()

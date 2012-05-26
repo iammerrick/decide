@@ -1,25 +1,15 @@
-define ['models/Model', 'jquery', 'use!underscore', 'moment'], (Model, $, _, moment) ->
-  class Place extends Model
-
-    vetoesKey: 'vetoesToday'
+define ['use!underscore', 'models/Model', 'collections/VetoCollection'], (_, Model, VetoCollection) ->
+  class Option extends Model
+    defaults:
+      name: 'Unknown'
+      vetoes: []
 
     initialize: ->
-      @setTodaysVetoes() if @has('vetoes')
-      @on('change:vetoes', @setTodaysVetoes, this)
+      @set 'vetoes', new VetoCollection @get 'vetoes'
+      super()
 
     veto: ->
-      $.ajax(
-        url: '/places/veto/'+@get('id')
-        success: =>
-          @set @vetoesKey, @get(@vetoesKey) + 1
-      )
-
-    setTodaysVetoes: ->
-      today = moment().sod().valueOf()
-      todaysVetoes = _.reduce @get('vetoes'), (memo, veto) ->
-        if moment(veto.created).valueOf() > today
-          memo + 1
-        else
-          memo
-      , 0
-      @set @vetoesKey, todaysVetoes or= 0
+      @get('vetoes').push
+        who: 'awesome-dude'
+        date: Date.now()
+      this
